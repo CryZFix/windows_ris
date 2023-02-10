@@ -6,6 +6,9 @@ copy mount\Windows\Boot\PXE\pxeboot.n12 .
 for %%a in (".") do set CURRENT_DIR_NAME=%%~na
 echo net use z: \\192.168.1.5\netboot\windows\%CURRENT_DIR_NAME% /user:install install>> mount\Windows\System32\startnet.cmd
 echo z:>> mount\Windows\System32\startnet.cmd
+IF %CURRENT_DIR_NAME%==11x64 (
+  echo regedit /s bypass.reg>> mount\Windows\System32\startnet.cmd
+)
 echo \sources\setup.exe>> mount\Windows\System32\startnet.cmd
 ::"C:\Program Files\Notepad++\notepad++.exe" mount\Windows\System32\startnet.cmd
 MD boot

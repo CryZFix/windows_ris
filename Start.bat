@@ -10,4 +10,7 @@ FOR %%a IN (10x64) do (
 	copy d:\src\pe\* d:\netboot\windows\%%a\.
 	cd d:\netboot\windows\%%a
 	call MakePE.bat
+  IF %%a==11x64 (
+    copy d:\src\bypass.reg d:\netboot\windows\%%a\.
+  )
 	)
