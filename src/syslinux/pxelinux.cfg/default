@@ -1,0 +1,28 @@
+UI pxelinux.cfg/menu.c32
+ALLOWOPTIONS 0
+PROMPT 0
+FONT pxelinux.cfg/cyr_a8x16.psf
+MENU TITLE Главное меню
+TIMEOUT 100
+DEFAULT 001
+
+
+MENU COLOR border 30;40 #00000000 #00000000 none
+MENU COLOR title 1;36;40 #c00090f0 #00000000 std
+MENU COLOR unsel 37;40 #90ffffff #00000000 std
+MENU COLOR hotkey 1;37;40 #ffffffff #00000000 std
+MENU COLOR sel 7;37;40 #e0000000 #20ff8000 all
+MENU COLOR scrollbar 30;40 #40000000 #00000000 std
+
+LABEL 001
+MENU LABEL загрузка с первого HDD
+KERNEL pxelinux.cfg/chain.c32
+APPEND hd0 0
+
+LABEL 002
+MENU LABEL Windows7x86
+KERNEL windows7x86/pxeboot.0
+
+LABEL 003
+MENU LABEL Windows7x64
+KERNEL windows7x64/pxeboot.0
