@@ -20,9 +20,29 @@ KERNEL pxelinux.cfg/chain.c32
 APPEND hd0 0
 
 LABEL 002
-MENU LABEL Windows7x86
-KERNEL windows7x86/pxeboot.0
+MENU LABEL Victoria HDD
+KERNEL pxelinux.cfg/memdisk
+INITRD images/v35.iso
+APPEND iso raw
 
 LABEL 003
-MENU LABEL Windows7x64
-KERNEL windows7x64/pxeboot.0
+MENU LABEL MemTest
+KERNEL pxelinux.cfg/memdisk
+INITRD images/MEMTEST.IMG
+APPEND img raw
+
+LABEL 004
+MENU LABEL Hardware Detection Tools
+COM32 pxelinux.cfg/hdt.c32
+
+LABEL 005
+MENU LABEL Windows 7
+KERNEL windows/7x64/pxeboot.0
+
+LABEL 006
+MENU LABEL Windows 10
+KERNEL windows/10x64/pxeboot.0
+
+LABEL 007
+MENU LABEL Windows 11
+KERNEL windows/11x64/pxeboot.0

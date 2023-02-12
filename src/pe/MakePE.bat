@@ -21,13 +21,34 @@ del etfs*
 rd mount
 rd ISO /s /q
 
-::Create BCD loader
-::cscript rep.vbs pxeboot.n12 bootmgr.exe pxeboot.0 %CURRENT_DIR_NAME%mgr.exe
-::cscript rep.vbs bootmgr.exe \boot\bcd ..\..\%CURRENT_DIR_NAME%mgr.exe \boot\%CURRENT_DIR_NAME% /bootmgr
-::editbin.exe ..\..\%CURRENT_DIR_NAME%mgr.exe /release
-::call createbcd.cmd d:\netboot\boot\%CURRENT_DIR_NAME% \windows\%CURRENT_DIR_NAME%\boot\winpe.wim
-::del createbcd.cmd editbin.exe link.exe mspdb80.dll rep.vbs test.txt bootmgr.exe pxeboot.n12
-
+IF %CURRENT_DIR_NAME%==7x64 (
+  cscript rep.vbs pxeboot.n12 bootmgr.exe pxeboot.0 000tmgr.exe
+  cscript rep.vbs bootmgr.exe \boot\bcd ..\..\000tmgr.exe \boot\000 /bootmgr
+  editbin.exe ..\..\000tmgr.exe /release
+  call createbcd.cmd d:\netboot\boot\000 \windows\7x64\boot\winpe.wim
+  del createbcd.cmd editbin.exe link.exe mspdb80.dll rep.vbs test.txt bootmgr.exe pxeboot.n12
+)
+IF %CURRENT_DIR_NAME%==8x64 (
+  cscript rep.vbs pxeboot.n12 bootmgr.exe pxeboot.0 001tmgr.exe
+  cscript rep.vbs bootmgr.exe \boot\bcd ..\..\001tmgr.exe \boot\001 /bootmgr
+  editbin.exe ..\..\001tmgr.exe /release
+  call createbcd.cmd d:\netboot\boot\001 \windows\8x64\boot\winpe.wim
+  del createbcd.cmd editbin.exe link.exe mspdb80.dll rep.vbs test.txt bootmgr.exe pxeboot.n12
+)
+IF %CURRENT_DIR_NAME%==10x64 (
+  cscript rep.vbs pxeboot.n12 bootmgr.exe pxeboot.0 002tmgr.exe
+  cscript rep.vbs bootmgr.exe \boot\bcd ..\..\002tmgr.exe \boot\002 /bootmgr
+  editbin.exe ..\..\002tmgr.exe /release
+  call createbcd.cmd d:\netboot\boot\002 \windows\10x64\boot\winpe.wim
+  del createbcd.cmd editbin.exe link.exe mspdb80.dll rep.vbs test.txt bootmgr.exe pxeboot.n12
+)
+IF %CURRENT_DIR_NAME%==11x64 (
+  cscript rep.vbs pxeboot.n12 bootmgr.exe pxeboot.0 003tmgr.exe
+  cscript rep.vbs bootmgr.exe \boot\bcd ..\..\003tmgr.exe \boot\003 /bootmgr
+  editbin.exe ..\..\003tmgr.exe /release
+  call createbcd.cmd d:\netboot\boot\003 \windows\11x64\boot\winpe.wim
+  del createbcd.cmd editbin.exe link.exe mspdb80.dll rep.vbs test.txt bootmgr.exe pxeboot.n12
+)
 del MakePE.bat
 
 :: Dism /Image:C:\test\offline /Add-Driver /Driver:c:\drivers /Recurse
